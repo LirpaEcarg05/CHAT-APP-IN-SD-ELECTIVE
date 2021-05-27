@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
 	socket.on('login', (userInfo) => {
         userList.push(userInfo);
         io.emit('userList', userList);
-        // socket.emit(Send a message to the client of the socket) + socket.broadcast.emit(Send to all clients, not including yourself)  = io.emit(Broadcast messages to all clients)
+        // socket.emit(Send a message to the client of the socket) + socket.broadcast.emit(Send to all clients, not innot icluding yourself)  = io.emit(Broadcast messages to all clients)
 	})
 
     socket.on('sendMsg', (data) => {

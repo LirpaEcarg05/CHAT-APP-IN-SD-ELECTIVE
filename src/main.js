@@ -263,7 +263,7 @@ Chat.prototype = {
                             <span style="padding-left: 20px;">${item.chatGroupName}</span>
                             <input type="hidden" value="${item.roomId}">
                             <div class="circle me_${item.roomId}" style="display: none;">0</div>
-                            <button onclick="exit('${item.roomId}')">退出</button>
+                            <button onclick="exit('${item.roomId}')">Drop Out</button>
                         </div>`;
             });
             $('.chat-group-list').innerHTML = str;
