@@ -8,14 +8,23 @@
     <style>
         .container{
             display: flex;
+            justify-content: center;
+            padding-top:100px;
+            
         }
         .user-panel{
-            width: 240px;
+            width: 340px;
+            justify-content: left;
+            color:white;
+            background-color: black;
+
         }
         .chat-panel{
             width: 600px;
             border: 1px solid #eee;
             position: relative;
+            justify-content: right;
+            color:black;
         }
       .select{
           display: flex;
@@ -112,15 +121,23 @@
         .tab{
             display: flex;
             margin-bottom: 15px;
+            
+          
         }
         .tab-box{
             position: relative;
+            padding: 5px, 5px, 5px, 5px;
+            border-color: black;
+            border:1px,solid;
         }
         .tab-item{
             width: 80px;
             padding-left: 20px;
             position: relative;
             cursor: default;
+            padding: 5px, 5px, 5px, 5px;
+            border-color: black;
+            border:1px,solid;
         }
         .group-chat-info{
             display: none;
@@ -175,7 +192,7 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container justify-content-right">
         <div class="user-panel">
             <div id="login-wrap">
                 <input class="user-name contenteditable" placeholder="please enter user name">
@@ -184,19 +201,19 @@
                     <img class="my-por" style="width: 60px;height: 60px;">
                 </div>
                 <div class="select" id="portrait">
-                </div>
+                </div><br>
                 <button class="chat-btn">Start chat</button>
             </div>
 
-            <div class="user-list-wrap">
+            <div class="user-list-wrap pt-100">
                 <div class="my-info"></div>
-                <div class="tab">
+                <div class="tab justify-content-center">
                     <div class="friend-tab-box tab-box">
-                        <div class="friend-tab tab-item" style="color: #308e56;" onclick="changeTab('message-wrap', 'friends-info', 0)">my good friend</div>
+                        <div class="friend-tab tab-item" style="color: #308e56;" onclick="changeTab('message-wrap', 'friends-info', 0)">Private Chat</div>
                         <div class="circle me-friend-tab" style="display: none;">0</div>
                     </div>
                     <div class="group-chat-tab-box tab-box">
-                        <div class="group-chat-tab tab-item" onclick="changeTab('group-chat-wrap', 'group-chat-info', 1)">My group chat</div>
+                        <div class="group-chat-tab tab-item" onclick="changeTab('group-chat-wrap', 'group-chat-info', 1)">Group Chat</div>
                         <div class="circle me-group-chat-tab" style="display: none;">0</div>
                     </div>
                 </div>
@@ -231,7 +248,7 @@
                         </div>
                         <div class="inp inp-box" contenteditable="true" placeholder="Enter your message here..."></div>
                         <div class="btn">
-                            <span>Press Enter to send the message</span>
+                            <span>send the message</span>
                             <button class="send-message">Send</button>
                         </div>
                     </div>
