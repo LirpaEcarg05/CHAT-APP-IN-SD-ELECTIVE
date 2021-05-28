@@ -233,9 +233,15 @@ Chat.prototype = {
         }
     },
     setMyInfo() {
-        $('.my-info').innerHTML = `<div class="user-item" style="border-bottom: 1px solid #eee;margin-bottom: 30px;">
-                            <img src="${this.userImg}"  style="width: 60px;height: 60px;">
-                            <span>${this.userName}</span>
+        $('.my-info').innerHTML = `<div class=" container-fluid user-item " style="border-bottom: 1px solid #eee;margin-bottom: 30px;">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                  <img src="${this.userImg}"  style="width: 60px;height: 60px;">
+                            </div>
+                            <div class="col-sm-4">
+                                 <h5 class="mt-3 text-secondary">${this.userName}</h5>
+                           </div>
+                        </div>
                         </div>`;
     },
     drawUserList() {

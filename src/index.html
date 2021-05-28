@@ -1,78 +1,84 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CHAT APP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
     <style>
-        .container{
+        /* .container{
             display: flex;
-        }
-        .user-panel{
-            width: 240px;
-        }
-        .chat-panel{
+        } */
+        /* .user-panel{
+            width: 600px;
+            margin-top: 100px;
+        } */
+        /* .chat-panel{
             width: 600px;
             border: 1px solid #eee;
             position: relative;
-        }
-      .select{
+        } */
+        /* .select{
           display: flex;
           display: -webkit-flex;
           justify-content: space-between;
           flex-direction: row;
           flex-wrap: wrap;
           width: 300px;
-      }
-      .user-list-wrap{
+      } */
+        /* .user-list-wrap{
           width: 100%;
-      }
-      .chat-group-list{
+      } */
+        /* .chat-group-list{
           margin-top: 15px;
-      }
-      .user-item, .chat-group-item{
+      } */
+        /* .user-item, .chat-group-item{
           width: 100%;
           position: relative;
-      }
+      } */
         .chat-group-item {
             display: flex;
             justify-content: space-between;
         }
-      .circle{
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 18px;
-          height: 18px;
-          line-height: 18px;
-          text-align: center;
-          font-size: 12px;
-           -webkit-border-radius: 50%;
-           -moz-border-radius: 50%;
-          border-radius: 50%;
-          background-color: red;
-          color: #fff;
-      }
-        .wrap-box{
-            height: 100%;
+
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            text-align: center;
+            font-size: 12px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background-color: red;
+            color: #fff;
         }
-        .wrap-box .name-info{
-            min-height: 30px;
-            font-size: 18px;
-            padding-left: 15px;
-        }
-        .message-box, .group-chat-box{
+
+      
+
+        .message-box,
+        .group-chat-box {
             background-color: rgb(245, 245, 245);
         }
-        .box{
+
+        .box {
             width: 600px;
             height: 260px;
-            border: 1px solid #eee;
+            
             overflow-y: scroll;
-            text-align: center;
+            width: auto;
         }
-        .default-bg{
+
+        .default-bg {
             background-color: #eee;
             font-size: 14px;
             text-align: center;
@@ -80,56 +86,68 @@
             line-height: 350px;
             color: #908d8d;
         }
-        .inp-box{
+
+        .inp-box {
             width: 600px;
             height: 50px;
             outline: none;
         }
-        .btn{
+
+        .btn {
             float: right;
         }
-        .msg-box{
+
+        .msg-box {
             display: flex;
             align-items: center;
             margin: 5px 0;
         }
-        .msg{
+
+        .msg {
             background-color: #fff;
             padding: 5px;
             max-width: 220px;
             text-align: left;
         }
-        .msg-box.right .msg{
+
+        .msg-box.right .msg {
             margin-right: 10px;
         }
-        .msg-box.left .msg{
+
+        .msg-box.left .msg {
             margin-left: 10px;
         }
-        .right{
+
+        .right {
             justify-content: flex-end;
         }
 
-        .tab{
+        .tab {
             display: flex;
             margin-bottom: 15px;
         }
-        .tab-box{
+
+        .tab-box {
             position: relative;
         }
-        .tab-item{
-            width: 80px;
-            padding-left: 20px;
+
+        .tab-item {
+            width: 100%;
+            padding-left: 10px;
             position: relative;
             cursor: default;
         }
-        .group-chat-info{
+
+        .group-chat-info {
             display: none;
         }
-        .emoji-icon{
+
+        .emoji-icon {
             width: 25px;
             height: 25px;
         }
-        .emoji{
+
+        .emoji {
             display: none;
             position: absolute;
             width: 600px;
@@ -139,7 +157,8 @@
             z-index: 2;
             box-sizing: border-box;
         }
-        .emot{
+
+        .emot {
             display: none;
             position: absolute;
             width: 600px;
@@ -149,7 +168,8 @@
             z-index: 2;
             box-sizing: border-box;
         }
-        .mask{
+
+        .mask {
             position: absolute;
             top: 0;
             width: 100%;
@@ -158,24 +178,33 @@
             display: none;
             background-color: rgba(0, 0, 0, 0.5);
         }
-        .system{
+
+        .system {
             font-size: 12px;
             transform: scale(0.9);
             display: inline-block;
             color: #fff;
             background-color: rgb(218, 218, 218);
-             -webkit-border-radius: 15px;
-             -moz-border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
             border-radius: 15px;
             padding: 0 5px;
         }
-        .hidden{
+
+        .hidden {
             display: none;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
+        <div class="container text-center">
+
+            <h1>WELCOME TO CHAT APP</h1>
+        </div>
+        <!-- <div class="container"> -->
+
         <div class="user-panel">
             <div id="login-wrap">
                 <input class="user-name contenteditable" placeholder="please enter user name">
@@ -187,83 +216,103 @@
                 </div>
                 <button class="chat-btn">Start chat</button>
             </div>
-
-            <div class="user-list-wrap">
-                <div class="my-info"></div>
-                <div class="tab">
-                    <div class="friend-tab-box tab-box">
-                        <div class="friend-tab tab-item" style="color: #308e56;" onclick="changeTab('message-wrap', 'friends-info', 0)">my good friend</div>
-                        <div class="circle me-friend-tab" style="display: none;">0</div>
-                    </div>
-                    <div class="group-chat-tab-box tab-box">
-                        <div class="group-chat-tab tab-item" onclick="changeTab('group-chat-wrap', 'group-chat-info', 1)">My group chat</div>
-                        <div class="circle me-group-chat-tab" style="display: none;">0</div>
+            <div class="row mt-5">
+                <div class="col-sm-4">
+                    <div class="user-list-wrap border border-info p-3">
+                        <div class="my-info "></div>
+                        <div class="tab "style="border-bottom: 1px solid #eee;">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!-- <div class="container-fluid friend-tab-box tab-box"> -->
+                                        <a class="friend-tab tab-item" style="color: #308e56;"
+                                            onclick="changeTab('message-wrap', 'friends-info', 0)">Private Chat</a>
+                                        <div class="circle me-friend-tab" style="display: none;">0</div>
+                                    <!-- </div> -->
+                                </div>
+                                <div class="col-sm-6">
+                                    <!-- <div class="container-fluid group-chat-tab-box tab-box"> -->
+                                        <a class="group-chat-tab tab-item"
+                                            onclick="changeTab('group-chat-wrap', 'group-chat-info', 1)">
+                                            Group chat</div>
+                                        <div class="circle me-group-chat-tab" style="display: none;">0</a>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="friends-info info-wrapper">No friends</div>
+                        <div class="group-chat-info info-wrapper">
+                            <span>Group chat room</span>
+                            <button onclick="createChatGroup()">Create group chat</button>
+                            <div class="select-chat-group"></div>
+                            <div class="now-select">
+                                <div>Current selection：</div>
+                            </div>
+                            <div class="create-group hidden">
+                                <input class="chatGroupNameInput" placeholder="Group chat name">
+                                <button onclick="confirmChatGroup()">Confirm creation</button>
+                            </div>
+                            <div class="chat-group-list"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="friends-info info-wrapper">No friends</div>
-                <div class="group-chat-info info-wrapper">
-                    <span>Group chat room</span>
-                    <button onclick="createChatGroup()">Create group chat</button>
-                    <div class="select-chat-group"></div>
-                    <div class="now-select">
-                        <div>Current selection：</div>
+                <div class="col-sm-8">
+                    <div class="chat-panel hidden container">
+                        <div class="message-wrap  ">
+                            <div class="default-bg message-default border-info">
+                                <span>Click on a friend to start chatting！</span>
+                            </div>
+                            <div class="container-fluid message-wrapper wrap-box hidden">
+                                <div class="container-fluid friend name-info text-light bg-info"></div>
+                                <div class="container-fluid message-box box"></div>
+                                <div class="input-box">
+                                    <div class="send-img-box">
+                                        <img class="emoji-icon text-warning" src="static/emoji.png" onclick="showEmojiBox()">
+                                        <img class="emoji-icon imgBox" src="static/emoji1.png" onclick="showEmotBox()">
+                                    </div>
+                                    <div class="row ml-1">
+                                    <div class="inp inp-box border border-info" contenteditable="true"
+                                        placeholder="Enter your message here...">
+                                        
+                                        
+                                    </div>
+                                    <button class="btn btn-info text-light send-message">Send</button>
+                                </div> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group-chat-wrap">
+                            <div class="default-bg group-chat-default">
+                                <span>Choose group chat and start chatting!</span>
+                            </div>
+                            <div class="group-chat-group-box wrap-box hidden">
+                                <div class="chatGroupName name-info text-light bg-info"></div>
+                                <div class="container-fluid group-chat-box box"></div>
+                                <div class="input-box">
+                                    <div class="send-img-box">
+                                        <img class="emoji-icon" src="static/emoji.png" onclick="showEmojiBox()">
+                                        <img class="emoji-icon imgBox" src="static/emoji1.png" onclick="showEmotBox()">
+                                    </div>
+                                    <div class="group-chat-inp inp-box" contenteditable="true"
+                                        placeholder="Enter your message here...">
+                                    </div>
+                                    <div class="btn">
+                                        <span> Press Enter to send the message</span>
+                                        <button class="send-message-group-chat">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emoji"></div>
+                        <div class="emot"></div>
+                        <div class="mask" onclick="hiddenBox()"></div>
                     </div>
-                    <div class="create-group hidden">
-                        <input class="chatGroupNameInput" placeholder="Group chat name">
-                        <button onclick="confirmChatGroup()">Confirm creation</button>
-                    </div>
-                    <div class="chat-group-list"></div>
                 </div>
             </div>
         </div>
-        <div class="chat-panel hidden">
-            <div class="message-wrap">
-                <div class="default-bg message-default">
-                    <span>Click on a friend to start chatting！</span>
-                </div>
-                <div class="message-wrapper wrap-box hidden">
-                    <div class="friend name-info"></div>
-                    <div class="message-box box"></div>
-                    <div class="input-box">
-                        <div class="send-img-box">
-                            <img class="emoji-icon" src="static/emoji.png" onclick="showEmojiBox()">
-                            <img class="emoji-icon imgBox" src="static/emoji1.png" onclick="showEmotBox()">
-                        </div>
-                        <div class="inp inp-box" contenteditable="true" placeholder="Enter your message here..."></div>
-                        <div class="btn">
-                            <span>Press Enter to send the message</span>
-                            <button class="send-message">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- </div> -->
+</body>
+<script src="./script/tool.js"></script>
+<script src="./main.js"></script>
 
-            <div class="group-chat-wrap">
-                <div class="default-bg group-chat-default">
-                    <span>Choose group chat and start chatting!</span>
-                </div>
-                <div class="group-chat-group-box wrap-box hidden">
-                    <div class="chatGroupName name-info"></div>
-                    <div class="group-chat-box box"></div>
-                    <div class="input-box">
-                        <div class="send-img-box">
-                            <img class="emoji-icon" src="static/emoji.png" onclick="showEmojiBox()">
-                            <img class="emoji-icon imgBox" src="static/emoji1.png" onclick="showEmotBox()">
-                        </div>
-                        <div class="group-chat-inp inp-box" contenteditable="true" placeholder="Enter your message here..."></div>
-                        <div class="btn">
-                            <span> Press Enter to send the message</span>
-                            <button class="send-message-group-chat">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="emoji"></div>
-            <div class="emot"></div>
-            <div class="mask" onclick="hiddenBox()"></div>
-        </div>
-    </div>
-  </body>
-  <script src="./script/tool.js" ></script>
-  <script src="./main.js" ></script>
 </html>
